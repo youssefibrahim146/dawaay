@@ -1,16 +1,16 @@
-import 'package:dawaay/view/screens/login_screen.dart';
-import 'package:dawaay/view/screens/signup_screen.dart';
+import 'package:dawaay/controller/login_controller.dart';
+import 'package:dawaay/controller/singup_contoller.dart';
 import 'package:get/get.dart';
 
 class DawaayBindings extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut(
-      () => const LoginScreen(),
+      () => LoginController(),
       fenix: true,
     );
     Get.lazyPut(
-      () => const SignupScreen(),
+      () => SingUpController(),
       fenix: true,
     );
   }

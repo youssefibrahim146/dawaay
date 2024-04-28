@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 class DawaayRouter {
   static List<GetPage> dawaayPages = [
     GetPage(
-      name: DawaayStrings.logInRoute,
+      name: AppStrings.logInRoute,
       page: () => const LoginScreen(),
       transition: Transition.noTransition,
       transitionDuration: const Duration(
@@ -14,7 +14,7 @@ class DawaayRouter {
       ),
     ),
     GetPage(
-      name: DawaayStrings.signUpRoute,
+      name: AppStrings.signUpRoute,
       page: () => const SignupScreen(),
       transition: Transition.noTransition,
       transitionDuration: const Duration(
