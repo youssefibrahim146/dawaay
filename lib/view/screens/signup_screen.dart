@@ -78,8 +78,20 @@ class SignupScreen extends GetWidget<SingUpController> {
                         color: DawaayColors.kSecondaryColor,
                         borderRadius: BorderRadius.circular(20)),
                     child: TextFormField(
-                      ///controller: _lastController,
                       keyboardType: TextInputType.name,
+                      onSaved: (value) {
+                        controller.lastName = value!;
+                      },
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return AppStrings.nameEmptyValidate;
+                        } else if (value.length < 4) {
+                          return AppStrings.nameLessThen4Validate;
+                        } else if (value.length > 24) {
+                          return AppStrings.nameLargerThen24Validate;
+                        }
+                        return null;
+                      },
                       decoration: const InputDecoration(
                         hintText: 'Last Name',
                         border: InputBorder.none,
@@ -161,7 +173,7 @@ class SignupScreen extends GetWidget<SingUpController> {
                   ),
 
                   // ------------ re type your password ----------
-                  Container(
+                  /*Container(
                     padding:
                         const EdgeInsets.symmetric(vertical: 1, horizontal: 15),
                     margin: const EdgeInsets.only(
@@ -170,8 +182,15 @@ class SignupScreen extends GetWidget<SingUpController> {
                         color: DawaayColors.kSecondaryColor,
                         borderRadius: BorderRadius.circular(20)),
                     child: TextFormField(
-                      ///controller: _reTypePasswordController,
                       keyboardType: TextInputType.text,
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return AppStrings.passwordEmptyValidate;
+                        } else if (value.length < 8) {
+                          return AppStrings.passwordLessThen8Validate;
+                        }
+                        return null;
+                      },
                       obscureText: true,
                       decoration: const InputDecoration(
                         hintText: 'Re-enter Password',
@@ -179,7 +198,7 @@ class SignupScreen extends GetWidget<SingUpController> {
                         hintMaxLines: 1,
                       ),
                     ),
-                  ),
+                  ),*/
                   // ---------------- signup button -----------------
                   const SizedBox(height: 10),
                   SubmitButton(

@@ -152,6 +152,7 @@ class AppStrings {
   static const String nameField = "name";
   static const String authUsersDocument = "authUsers";
   static const String emailField = "email";
+  static const String lastNameField = "lastName";
   static const String emailsField = "emails";
   static const String profileImageField = "profileImage";
 

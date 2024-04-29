@@ -13,7 +13,7 @@ class SingUpController extends GetxController {
   static FirebaseFirestore firestore = FirebaseFirestore.instance;
   GlobalKey<FormState> formState = GlobalKey<FormState>();
   static FirebaseAuth fireauth = FirebaseAuth.instance;
-  String? userName, emailAddress, password;
+  String? userName, lastName, emailAddress, password;
   RxBool isLoading = false.obs;
   RxBool isObscure = true.obs;
 
@@ -37,6 +37,7 @@ class SingUpController extends GetxController {
             await fireauth.signOut();
             await usersCollection.doc(emailAddress).set({
               AppStrings.nameField: userName,
+              AppStrings.lastNameField: lastName,
               AppStrings.emailField: emailAddress,
             });
             await usersCollection.doc(AppStrings.authUsersDocument).set(

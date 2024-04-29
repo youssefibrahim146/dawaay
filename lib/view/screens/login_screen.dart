@@ -76,36 +76,38 @@ class LoginScreen extends GetWidget<LoginController> {
                       decoration: BoxDecoration(
                           color: DawaayColors.kSecondaryColor,
                           borderRadius: BorderRadius.circular(20)),
-                      child: TextFormField(
-                        obscureText: true,
-                        onSaved: (value) {
-                          controller.password = value!;
-                        },
-                        validator: (String? value) {
-                          if (value == null || value.isEmpty) {
-                            return AppStrings.passwordEmptyValidate;
-                          } else if (value.length < 8) {
-                            return AppStrings.passwordLessThen8Validate;
-                          } else if (value.length > 24) {
-                            return AppStrings.passwordLargerThen24Validate;
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                          hintText: 'Password',
-                          border: InputBorder.none,
-                          hintMaxLines: 1,
-                          suffixIcon: InkWell(
-                            onTap: controller.passwordObscureOnClick,
-                            child: Icon(
-                              controller.isObscure.value
-                                  ? Icons.visibility_off_rounded
-                                  : Icons.visibility_rounded,
-                              color: DawaayColors.kBlueColor,
+                      child: Obx(() {
+                        return TextFormField(
+                          obscureText: controller.isObscure.value,
+                          onSaved: (value) {
+                            controller.password = value!;
+                          },
+                          validator: (String? value) {
+                            if (value == null || value.isEmpty) {
+                              return AppStrings.passwordEmptyValidate;
+                            } else if (value.length < 8) {
+                              return AppStrings.passwordLessThen8Validate;
+                            } else if (value.length > 24) {
+                              return AppStrings.passwordLargerThen24Validate;
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                            hintText: 'Password',
+                            border: InputBorder.none,
+                            hintMaxLines: 1,
+                            suffixIcon: InkWell(
+                              onTap: controller.passwordObscureOnClick,
+                              child: Icon(
+                                controller.isObscure.value
+                                    ? Icons.visibility_off_rounded
+                                    : Icons.visibility_rounded,
+                                color: DawaayColors.kBlueColor,
+                              ),
                             ),
                           ),
-                        ),
-                      ),
+                        );
+                      }),
                     ),
                     // ----------- forgot your password? ----------
                     // const Text(
