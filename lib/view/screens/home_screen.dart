@@ -70,7 +70,8 @@ class HomeScreen extends StatelessWidget {
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)))),
                   child: const Text(
-                    'Medical Issue',
+                    textAlign: TextAlign.center,
+                    'Fast treatment',
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.normal,
@@ -81,7 +82,9 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(width: 10),
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(AppStrings.buyMedicineRoute);
+                    },
                     style: ButtonStyle(
                         padding: MaterialStateProperty.all(
                             const EdgeInsets.symmetric(
@@ -92,7 +95,8 @@ class HomeScreen extends StatelessWidget {
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12)))),
                     child: const Text(
-                      'Medicine',
+                      textAlign: TextAlign.center,
+                      'Buy Medicine',
                       style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.normal,
