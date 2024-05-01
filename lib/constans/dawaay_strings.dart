@@ -6,6 +6,7 @@ class AppStrings {
   static const String medicineDetailsRoute = '/medicineDetails';
   static const String homeRoute = '/home';
   static const String logInRoute = '/logIn';
+  static const String medicinesCollection = 'medicines';
   static const String closingSquareBracketSign = "]";
   static const String openingSquareBracketSign = "[";
   static const String closingParenthesisSign = ")";
@@ -151,7 +152,11 @@ class AppStrings {
   static const String telText = "tel: ";
   static const String eGPText = "EGP";
   static const String usersCollection = "users";
-  static const String nameField = "name";
+  static const String nameField = "Name";
+  static const String dosageField = "Dosage";
+  static const String imageUrlField = "Image";
+  static const String sideEffectsField = "SideEffects";
+  static const String priceField = "Price";
   static const String authUsersDocument = "authUsers";
   static const String emailField = "email";
   static const String lastNameField = "lastName";

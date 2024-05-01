@@ -42,7 +42,7 @@ class DawaayRouter {
     ),
     GetPage(
       name: AppStrings.medicineDetailsRoute,
-      page: () => const MedicineDetailsScreen(),
+      page: () => MedicineDetailsScreen(),
       transition: Transition.noTransition,
       transitionDuration: const Duration(
         milliseconds: 500,
