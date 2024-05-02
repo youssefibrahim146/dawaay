@@ -1,101 +1,84 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dawaay/model/cart_item_model.dart';
+import 'package:dawaay/constans/dawaay_strings.dart';
 import 'package:dawaay/model/medicine.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class CartController extends GetxController {
-  RxDouble totalPrice = 0.0.obs;
-
   @override
-  void onInit() {
-    getUserCartItems();
+  void onInit() async {
+    await fetchUserCartItems();
     super.onInit();
   }
 
-  final _cartItems = <CartItemModel>[].obs;
+  RxDouble totalPrice = 0.0.obs;
+  User? auth = FirebaseAuth.instance.currentUser;
+  RxList<MedicineModel> stramCartItems = RxList<MedicineModel>();
+  var cartCollection = FirebaseFirestore.instance
+      .collection('carts')
+      .doc(FirebaseAuth.instance.currentUser!.uid);
 
-  List<CartItemModel> get cartItems => _cartItems.toList();
-
-  void addToCart(MedicineModel medicine) {
-    final existingItem = _cartItems.firstWhereOrNull(
-      (item) => item.medicine.key == medicine.key,
-    );
-
-    if (existingItem != null) {
-      existingItem.quantity++;
-    } else {
-      _cartItems.add(CartItemModel(medicine: medicine, quantity: 1));
-    }
-
-    saveCartToFirebase();
-  }
-
-  Future<void> saveCartToFirebase() async {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user == null) return;
-
-    final cartItemsJson = _cartItems.map((item) => item.toJson()).toList();
-
-    await FirebaseFirestore.instance
-        .collection('carts')
-        .doc(user.uid)
-        .set({'items': cartItemsJson});
-  }
-
-  Future<void> getUserCartItems() async {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user == null) return;
-
-    final cartDoc = await FirebaseFirestore.instance
-        .collection('carts')
-        .doc(user.uid)
+  void addToCart(MedicineModel medicine) async {
+    final itemQuery = await cartCollection
+        .collection("items")
+        .where("key", isEqualTo: medicine.key)
+        .limit(1)
         .get();
 
-    if (cartDoc.exists) {
-      final cartItemsJson = cartDoc.data()?['items'] as List;
-      _cartItems.value = cartItemsJson
-          .map((itemJson) => CartItemModel.fromJson(itemJson))
-          .toList();
+    if (itemQuery.docs.isNotEmpty) {
+      // If item already exists, update its quantity
+      final docId = itemQuery.docs.first.id;
+      await cartCollection
+          .collection("items")
+          .doc(docId)
+          .update({AppStrings.quantityField: FieldValue.increment(1)});
+    } else {
+      // If item doesn't exist, add it to the cart
+      await cartCollection.collection("items").add({
+        "key": medicine.key,
+        AppStrings.nameField: medicine.name,
+        AppStrings.dosageField: medicine.dosage,
+        AppStrings.imageUrlField: medicine.imageUrl,
+        AppStrings.sideEffectsField: medicine.sideEffects,
+        AppStrings.priceField: medicine.price,
+        AppStrings.quantityField: 1,
+      });
     }
+    await fetchUserCartItems();
+  }
+
+  Future<List<MedicineModel>> fetchUserCartItems() async {
+    QuerySnapshot snapshot = await cartCollection.collection("items").get();
+    List<MedicineModel> cartItems = snapshot.docs.map((doc) {
+      return MedicineModel.fromJson(doc.data() as Map<String, dynamic>, doc.id);
+    }).toList();
+    stramCartItems.value = cartItems;
+    return cartItems;
   }
 
   void removeFromCart(MedicineModel medicine) {
-    final existingItem = _cartItems.firstWhereOrNull(
-      (item) => item.medicine.key == medicine.key,
-    );
-
-    if (existingItem != null) {
-      _cartItems.remove(existingItem);
-      saveCartToFirebase();
-    }
+    cartCollection.collection("items").doc(medicine.key).delete();
   }
 
-  void incrementQuantity(MedicineModel medicine) {
-    final existingItem = _cartItems.firstWhereOrNull(
-      (item) => item.medicine.key == medicine.key,
-    );
-
-    if (existingItem != null) {
-      existingItem.quantity++;
-      saveCartToFirebase();
-    }
+  void incrementQuantity(MedicineModel medicine) async {
+    await cartCollection.collection("items").doc(medicine.key).update({
+      'quantity': FieldValue.increment(1),
+    });
+    await fetchUserCartItems();
   }
 
-  void decrementQuantity(MedicineModel medicine) {
-    final existingItem = _cartItems.firstWhereOrNull(
-      (item) => item.medicine.key == medicine.key,
-    );
-
-    if (existingItem != null && existingItem.quantity > 1) {
-      existingItem.quantity--;
-      saveCartToFirebase();
-    }
+  void decrementQuantity(MedicineModel medicine) async {
+    await cartCollection.collection("items").doc(medicine.key).update({
+      'quantity': FieldValue.increment(-1),
+    });
+    await fetchUserCartItems();
   }
 
   void calculateTotalPrice() {
-    for (var item in _cartItems) {
-      totalPrice.value += (item.medicine.price * item.quantity);
+    totalPrice.value = 0.0;
+    fetchUserCartItems();
+    for (MedicineModel cartItem in stramCartItems) {
+      totalPrice.value += cartItem.price * cartItem.quantity;
     }
   }
 }

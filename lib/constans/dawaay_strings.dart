@@ -158,6 +158,7 @@ class AppStrings {
   static const String imageUrlField = "Image";
   static const String sideEffectsField = "SideEffects";
   static const String priceField = "Price";
+  static const String quantityField = "quantity";
   static const String authUsersDocument = "authUsers";
   static const String emailField = "email";
   static const String lastNameField = "lastName";

@@ -7,6 +7,7 @@ class MedicineModel {
   final String sideEffects;
   final int price;
   final String key;
+  int quantity;
 
   MedicineModel({
     required this.name,
@@ -15,16 +16,18 @@ class MedicineModel {
     required this.sideEffects,
     required this.price,
     required this.key,
+    required this.quantity,
   });
 
   factory MedicineModel.fromJson(Map<String, dynamic> json, String key) {
     return MedicineModel(
       key: key,
-      name: json[AppStrings.nameField],
-      dosage: json[AppStrings.dosageField],
-      imageUrl: json[AppStrings.imageUrlField],
-      sideEffects: json[AppStrings.sideEffectsField],
-      price: json[AppStrings.priceField] as int,
+      name: json[AppStrings.nameField] ?? "xx",
+      dosage: json[AppStrings.dosageField] ?? "xx",
+      imageUrl: json[AppStrings.imageUrlField] ?? "xx",
+      sideEffects: json[AppStrings.sideEffectsField] ?? "xx",
+      price: json[AppStrings.priceField] as int ?? 00,
+      quantity: json["quantity"] as int ?? 00,
     );
   }
 
@@ -36,6 +39,7 @@ class MedicineModel {
       "sideEffects": sideEffects,
       "price": price,
       "key": key,
+      "quantity": quantity,
     };
   }
 

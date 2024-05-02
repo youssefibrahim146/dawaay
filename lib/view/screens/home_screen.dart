@@ -1,5 +1,6 @@
 import 'package:dawaay/constans/dawaay_colors.dart';
 import 'package:dawaay/constans/dawaay_strings.dart';
+import 'package:dawaay/view/widgets/gap_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,6 +11,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Image.asset("assets/bg/ai icon.png"),
+      ),
       appBar: AppBar(elevation: 0, actions: [
         TextButton(
           child: const Text(
@@ -56,35 +61,13 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
             // ------------- row that have 2 buttons ----------
-            Row(
+            Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                      padding: MaterialStateProperty.all(
-                          const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 8)),
-                      elevation: MaterialStateProperty.all(1),
-                      backgroundColor: MaterialStateProperty.all(Colors.white),
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12)))),
-                  child: const Text(
-                    textAlign: TextAlign.center,
-                    'Fast treatment',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.normal,
-                      fontSize: 23,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
+                Container(
+                  margin: const EdgeInsets.only(bottom: 20),
                   child: ElevatedButton(
-                    onPressed: () {
-                      Get.toNamed(AppStrings.buyMedicineRoute);
-                    },
+                    onPressed: () {},
                     style: ButtonStyle(
                         padding: MaterialStateProperty.all(
                             const EdgeInsets.symmetric(
@@ -96,7 +79,7 @@ class HomeScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(12)))),
                     child: const Text(
                       textAlign: TextAlign.center,
-                      'Buy Medicine',
+                      'Fast treatment',
                       style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.normal,
@@ -105,6 +88,30 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                const SizedBox(width: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    Get.toNamed(AppStrings.buyMedicineRoute);
+                  },
+                  style: ButtonStyle(
+                      padding: MaterialStateProperty.all(
+                          const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 8)),
+                      elevation: MaterialStateProperty.all(1),
+                      backgroundColor: MaterialStateProperty.all(Colors.white),
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12)))),
+                  child: const Text(
+                    textAlign: TextAlign.center,
+                    'Buy Medicine',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 23,
+                    ),
+                  ),
+                ),
+                const GapWidget(20),
               ],
             ),
           ],
