@@ -1,5 +1,7 @@
 import 'package:dawaay/constans/dawaay_colors.dart';
+import 'package:dawaay/constans/dawaay_strings.dart';
 import 'package:dawaay/controller/buy_medicine_controller.dart';
+import 'package:dawaay/controller/cart_controller.dart';
 import 'package:dawaay/model/medicine.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,7 +13,19 @@ class BuyMedicineScreen extends GetWidget<BuyMedicineController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {
+              Get.toNamed(AppStrings.cartRoute);
+            },
+            icon: const Icon(
+              Icons.shopping_cart,
+              size: 25,
+            ),
+          ),
+        ],
+      ),
       body: Column(
         children: [
           //search bar
@@ -90,23 +104,49 @@ class BuyMedicineScreen extends GetWidget<BuyMedicineController> {
                                     fontSize: 18,
                                   ),
                                 ),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: 3,
-                                    horizontal: 15,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: DawaayColors.kprimaryColor,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Text(
-                                    "${medicines[index].price} EGP",
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 13,
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 3,
+                                        horizontal: 15,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: DawaayColors.kprimaryColor,
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Text(
+                                        "${medicines[index].price} EGP",
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 13,
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                    Container(
+                                      padding: const EdgeInsets.all(5),
+                                      decoration: BoxDecoration(
+                                        color: DawaayColors.kprimaryColor,
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: InkWell(
+                                        onTap: () {
+                                          final cartController =
+                                              Get.find<CartController>();
+                                          cartController
+                                              .addToCart(medicines[index]);
+                                        },
+                                        child: const Icon(
+                                          Icons.add_shopping_cart,
+                                          size: 18,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             )),

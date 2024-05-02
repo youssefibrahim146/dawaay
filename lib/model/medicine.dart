@@ -27,5 +27,17 @@ class MedicineModel {
       price: json[AppStrings.priceField] as int,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "name": name,
+      "dosage": dosage,
+      "imageUrl": imageUrl,
+      "sideEffects": sideEffects,
+      "price": price,
+      "key": key,
+    };
+  }
+
 //
 }
