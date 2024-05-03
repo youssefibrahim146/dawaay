@@ -3,6 +3,7 @@ class AppStrings {
   static const String home = 'Home';
   static const String signUpRoute = '/signUp';
   static const String cartRoute = '/cart';
+  static const String checkoutRoute = '/checkout';
   static const String buyMedicineRoute = '/buyMedicine';
   static const String medicineDetailsRoute = '/medicineDetails';
   static const String homeRoute = '/home';
