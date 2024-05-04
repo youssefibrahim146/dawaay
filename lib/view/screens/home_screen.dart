@@ -1,5 +1,5 @@
-import 'package:dawaay/constans/dawaay_colors.dart';
-import 'package:dawaay/constans/dawaay_strings.dart';
+import 'package:dawaay/constants/dawaay_colors.dart';
+import 'package:dawaay/constants/dawaay_strings.dart';
 import 'package:dawaay/view/widgets/gap_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -67,7 +67,9 @@ class HomeScreen extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(bottom: 20),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(AppStrings.fastTreatmentRoute);
+                    },
                     style: ButtonStyle(
                         padding: MaterialStateProperty.all(
                             const EdgeInsets.symmetric(

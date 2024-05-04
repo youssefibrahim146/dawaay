@@ -1,4 +1,4 @@
-import 'package:dawaay/constans/dawaay_colors.dart';
+import 'package:dawaay/constants/dawaay_colors.dart';
 import 'package:dawaay/model/medicine.dart';
 import 'package:dawaay/view/widgets/gap_widget.dart';
 import 'package:flutter/material.dart';

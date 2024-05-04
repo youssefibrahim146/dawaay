@@ -1,4 +1,4 @@
-import 'package:dawaay/constans/dawaay_strings.dart';
+import 'package:dawaay/constants/dawaay_strings.dart';
 
 class AppFormats {
   /// To format all the firebase messages by replacing any sign to space.

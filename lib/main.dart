@@ -1,6 +1,6 @@
-import 'package:dawaay/constans/dawaay_baindings.dart';
-import 'package:dawaay/constans/dawaay_router.dart';
-import 'package:dawaay/constans/dawaay_strings.dart';
+import 'package:dawaay/constants/dawaay_baindings.dart';
+import 'package:dawaay/constants/dawaay_router.dart';
+import 'package:dawaay/constants/dawaay_strings.dart';
 import 'package:dawaay/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';

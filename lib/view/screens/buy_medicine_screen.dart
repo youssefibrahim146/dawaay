@@ -1,5 +1,5 @@
-import 'package:dawaay/constans/dawaay_colors.dart';
-import 'package:dawaay/constans/dawaay_strings.dart';
+import 'package:dawaay/constants/dawaay_colors.dart';
+import 'package:dawaay/constants/dawaay_strings.dart';
 import 'package:dawaay/controller/buy_medicine_controller.dart';
 import 'package:dawaay/controller/cart_controller.dart';
 import 'package:dawaay/model/medicine.dart';

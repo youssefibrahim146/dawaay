@@ -1,4 +1,4 @@
-import 'package:dawaay/constans/dawaay_strings.dart';
+import 'package:dawaay/constants/dawaay_strings.dart';
 
 class MedicineModel {
   final String name;

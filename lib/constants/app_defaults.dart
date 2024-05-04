@@ -1,5 +1,5 @@
-import 'package:dawaay/constans/dawaay_colors.dart';
-import 'package:dawaay/constans/dawaay_strings.dart';
+import 'package:dawaay/constants/dawaay_colors.dart';
+import 'package:dawaay/constants/dawaay_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';

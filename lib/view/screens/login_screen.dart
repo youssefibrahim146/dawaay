@@ -1,5 +1,5 @@
-import 'package:dawaay/constans/dawaay_colors.dart';
-import 'package:dawaay/constans/dawaay_strings.dart';
+import 'package:dawaay/constants/dawaay_colors.dart';
+import 'package:dawaay/constants/dawaay_strings.dart';
 import 'package:dawaay/controller/login_controller.dart';
 import 'package:dawaay/view/widgets/submit_button.dart';
 import 'package:flutter/material.dart';

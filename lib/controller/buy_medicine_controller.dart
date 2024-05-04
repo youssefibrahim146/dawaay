@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dawaay/constans/app_defaults.dart';
-import 'package:dawaay/constans/dawaay_strings.dart';
+import 'package:dawaay/constants/app_defaults.dart';
+import 'package:dawaay/constants/dawaay_strings.dart';
 import 'package:dawaay/model/medicine.dart';
 import 'package:get/get.dart';
 

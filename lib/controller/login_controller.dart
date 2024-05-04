@@ -1,6 +1,6 @@
-import 'package:dawaay/constans/app_defaults.dart';
-import 'package:dawaay/constans/app_formats.dart';
-import 'package:dawaay/constans/dawaay_strings.dart';
+import 'package:dawaay/constants/app_defaults.dart';
+import 'package:dawaay/constants/app_formats.dart';
+import 'package:dawaay/constants/dawaay_strings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
