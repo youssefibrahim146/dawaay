@@ -17,6 +17,9 @@ class CheckoutController extends GetxController {
   var cartCollection = FirebaseFirestore.instance
       .collection('carts')
       .doc(FirebaseAuth.instance.currentUser!.uid);
+  var confirmedOrderCollection = FirebaseFirestore.instance
+      .collection('confirmed orders')
+      .doc(FirebaseAuth.instance.currentUser!.email);
 
   RxBool isCashOnDelivery = false.obs;
   RxBool isCreditCard = false.obs;
@@ -93,6 +96,12 @@ class CheckoutController extends GetxController {
               cvvController.value.text.isNotEmpty)) {
         /// confirm code here
         for (var medicineModel in medicine) {
+          await confirmedOrderCollection.collection('items').add({
+            AppStrings.nameField: medicineModel.name,
+            AppStrings.priceField: medicineModel.price,
+            AppStrings.quantityField: medicineModel.quantity,
+            'key': medicineModel.key,
+          });
           await cartCollection
               .collection("items")
               .doc(medicineModel.key)
