@@ -1,3 +1,4 @@
+import 'package:dawaay/controller/ai_controller.dart';
 import 'package:dawaay/controller/buy_medicine_controller.dart';
 import 'package:dawaay/controller/cart_controller.dart';
 import 'package:dawaay/controller/chechout_controller.dart';
@@ -26,6 +27,10 @@ class DawaayBindings extends Bindings {
     );
     Get.lazyPut(
       () => CheckoutController(),
+      fenix: true,
+    );
+    Get.lazyPut(
+      () => AiController(),
       fenix: true,
     );
   }

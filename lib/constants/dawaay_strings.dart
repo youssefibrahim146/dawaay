@@ -9,6 +9,7 @@ class AppStrings {
   static const String medicineDetailsRoute = '/medicineDetails';
   static const String homeRoute = '/home';
   static const String logInRoute = '/logIn';
+  static const String aiRoute = '/ai';
   static const String medicinesCollection = 'medicines';
   static const String closingSquareBracketSign = "]";
   static const String openingSquareBracketSign = "[";

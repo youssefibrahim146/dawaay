@@ -12,7 +12,9 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Get.toNamed(AppStrings.aiRoute);
+        },
         child: Image.asset("assets/bg/ai icon.png"),
       ),
       appBar: AppBar(elevation: 0, actions: [

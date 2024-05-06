@@ -1,4 +1,5 @@
 import 'package:dawaay/constants/dawaay_strings.dart';
+import 'package:dawaay/view/screens/ai_screen.dart';
 import 'package:dawaay/view/screens/buy_medicine_screen.dart';
 import 'package:dawaay/view/screens/cart_screen.dart';
 import 'package:dawaay/view/screens/checkout_screen.dart';
@@ -70,6 +71,14 @@ class DawaayRouter {
     GetPage(
       name: AppStrings.fastTreatmentRoute,
       page: () => const FastTreatmentScreen(),
+      transition: Transition.noTransition,
+      transitionDuration: const Duration(
+        milliseconds: 500,
+      ),
+    ),
+    GetPage(
+      name: AppStrings.aiRoute,
+      page: () => const AiScreen(),
       transition: Transition.noTransition,
       transitionDuration: const Duration(
         milliseconds: 500,
