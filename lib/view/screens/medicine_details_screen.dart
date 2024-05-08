@@ -20,11 +20,12 @@ class MedicineDetailsScreen extends StatelessWidget {
           children: [
             Image.network(
               medicine.imageUrl,
-              height: 170,
+              height: 160,
               width: Get.width,
               fit: BoxFit.fill,
             ),
             Container(
+              height: Get.height - 150,
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: DawaayColors.kprimaryColor,
@@ -33,100 +34,98 @@ class MedicineDetailsScreen extends StatelessWidget {
                   topRight: Radius.circular(20),
                 ),
               ),
-              child: Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Center(
-                      child: Text(
-                        medicine.name,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: Text(
+                      medicine.name,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const GapWidget(25),
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 3,
+                          horizontal: 15,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Text(
+                          "Medicine price",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
+                        ),
+                      ),
+                      const GapWidget(50),
+                      Text(
+                        "${medicine.price} EGP",
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+                    ],
+                  ),
+                  const GapWidget(35),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 3,
+                      horizontal: 15,
                     ),
-                    const GapWidget(25),
-                    Row(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 3,
-                            horizontal: 15,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: const Text(
-                            "Medicine price",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
-                          ),
-                        ),
-                        const GapWidget(50),
-                        Text(
-                          "${medicine.price} EGP",
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    const GapWidget(35),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 3,
-                        horizontal: 15,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: const Text(
-                        "Medicine Dosage",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
-                      ),
+                    child: const Text(
+                      "Medicine Dosage",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                     ),
-                    const GapWidget(10),
-                    Text(
-                      medicine.dosage,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                      ),
+                  ),
+                  const GapWidget(10),
+                  Text(
+                    medicine.dosage,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
                     ),
-                    const GapWidget(25),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 3,
-                        horizontal: 15,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: const Text(
-                        "Side effects",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
-                      ),
+                  ),
+                  const GapWidget(25),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 3,
+                      horizontal: 15,
                     ),
-                    const GapWidget(10),
-                    Text(
-                      medicine.sideEffects,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                      ),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                  ],
-                ),
+                    child: const Text(
+                      "Side effects",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
+                  ),
+                  const GapWidget(10),
+                  Text(
+                    medicine.sideEffects,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
